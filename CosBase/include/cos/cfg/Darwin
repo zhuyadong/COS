@@ -29,13 +29,13 @@ DOCDIR      := share/doc
 #
 # program specific
 #
-BINTYPE     := shared
+BINTYPE     := static #shared
 BINEXT      := 
 
 #
 # library specific (no static on MacOS X for gcc)
 #
-LIBTYPE     := shared plugin
+LIBTYPE     := static plugin #shared plugin
 LIBPREFIX   := lib
 LIBAREXT    := .a
 LIBSHEXT    := .so
@@ -71,7 +71,7 @@ RELEASE_CC  :=
 RELEASE_LD  := 
 
 STATIC_CC   := -static
-STATIC_LD   := -static
+STATIC_LD   := #-static
 
 SHARED_CC   := -dynamiclib -fPIC
 SHARED_LD    = -dynamiclib -fPIC -Wl,-install_name,$(@F) -Wl,-U,_cos_symbol_init

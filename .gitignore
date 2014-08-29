@@ -5,3 +5,8 @@
 Linux
 doc/api
 INSTALLED_FILES
+Darwin/
+*.a
+*.swp
+*.pyc
+CosBase/tests/cos*

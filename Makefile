@@ -32,7 +32,7 @@ version := 0.9
 release := 201003
 
 # modules
-modules := CosBase CosStd
+modules := CosBase CosStd CosUI
 
 # documentation
 auxdocs := $(wildcard doc/*.pdf.gz) doc/html \

@@ -1,6 +1,6 @@
 #
 #  C Object System
-#  COS Base Library
+#  COS Standard Library
 # 
 #  Copyright 2007+ Laurent Deniau <laurent.deniau@gmail.com>
 # 
@@ -18,7 +18,7 @@
 #
 
 # bootstrap, normally $(cos) = cos
-cos := include/cos
+cos := ../CosBase/include/cos
 
 #
 # standard COS makefile
@@ -27,9 +27,9 @@ cos := include/cos
 include $(cos)/prologue
 
 # project
-library := CosBase
-version := 0.9
-release := 201003
+library := CosUI
+version := 0.1
+release := 201002
 package := $(library)-$(version)_$(release)
 
 # targets
@@ -42,13 +42,13 @@ defgens := include/cos/gen/*.h
 defprps := include/cos/prp/*.h
 
 # project dependencies (as with -lname)
-libdeps := $(SYSLIBS)
-moddeps :=
+libdeps := m wapcaplet
+moddeps := CosBase CosStd
 
 # project dependencies (as with -Ipath or -Lpath)
-incdirs := src include
+incdirs := src include ../CosBase/include ../CosStd/include ./libwapcaplet/include
 bindirs :=
-libdirs :=
+libdirs := ../CosBase/$(OSNAME)/lib ../CosStd/$(OSNAME)/lib ./libwapcaplet
 moddirs :=
 
 # documentation
@@ -59,29 +59,6 @@ cleanpat :=
 tarexpat :=
 insexpat :=
 
-# reload makefile (bootstrap)
-ifeq ($(filter clean% tarball% uninstall%,$(MAKECMDGOALS)),)
-DOIT := $(if $(BOOTSTRAP),,$(shell $(MAKE) -R bootstrap BOOTSTRAP=yes))
-endif
-
 include $(cos)/epilogue
 
-# end of (standard) makefile
-
-#
-# COS boostrap
-# install tools cosgen, cosprp, coscmt and cossym before anything else is done.
-#
-.PHONY: bootstrap
-
-bootstrap: $(OSNAME)/bin/coscmt$(BINEXT)
-	$_ cp -fP bin/cosgen$(BINEXT) $(dir $<)
-	$_ cp -fP bin/cosprp$(BINEXT) $(dir $<)
-	$_ cp -fP bin/cossym$(BINEXT) $(dir $<)
-
-$(OSNAME)/bin/coscmt$(BINEXT): CCFLAGS := $(CCFLAGS)
-$(OSNAME)/bin/coscmt$(BINEXT): tools/src/coscmt.c
-	$_ $(call mkdir,$(dir $@)) 
-	$_ $(CC) $(CCFLAGS) $< -o $@
-	$_ $(if $(STRIP),$(STRIP) $@)
-
+# end of makefile

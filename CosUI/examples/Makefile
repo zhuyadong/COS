@@ -1,6 +1,6 @@
 #
 #  C Object System
-#  COS Standard Library
+#  COS example
 # 
 #  Copyright 2007+ Laurent Deniau <laurent.deniau@gmail.com>
 # 
@@ -18,47 +18,34 @@
 #
 
 # bootstrap, normally $(cos) = cos
-cos := ../CosBase/include/cos
+cos := ../../CosBase/include/cos
+base := ../../CosBase
+std := ../../CosStd
+ui := ../../CosUI
 
-#
 # standard COS makefile
-#
 
 include $(cos)/prologue
 
 # project
-library := CosStd
-version := 0.1
-release := 201002
-package := $(library)-$(version)_$(release)
+program := main
 
 # targets
-targets := debug
+targets := debug # debug.run
 
-# files and modules
-sources := src/*.c
-headers := include/cos/*.h include/cos/*/*.h
-defgens := include/cos/gen/*.h
-defprps := include/cos/prp/*.h
+# files & modules
+sources := *.c
+defgens := 
+defprps :=
 
 # project dependencies (as with -lname)
-libdeps := m
-moddeps := CosBase
+libdeps := wapcaplet
+moddeps := CosBase CosStd CosUI
 
 # project dependencies (as with -Ipath or -Lpath)
-incdirs := src include ../CosBase/include
-bindirs :=
-libdirs := ../CosBase/$(OSNAME)/lib
-moddirs :=
-
-# documentation
-auxdocs :=
-
-# patterns (clean, install-excluded, tar-excluded)
-cleanpat :=
-tarexpat :=
-insexpat :=
+incdirs := $(base)/include $(std)/include $(ui)/include ../../include ../libwapcaplet/include .
+libdirs := $(base)/$(OSNAME)/lib $(std)/$(OSNAME)/lib $(ui)/$(OSNAME)/lib ../libwapcaplet
 
 include $(cos)/epilogue
 
-# end of makefile
+# end of COS example makefile
