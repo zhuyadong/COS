@@ -33,7 +33,7 @@ release := 201002
 package := $(library)-$(version)_$(release)
 
 # targets
-targets := all # debug # all
+targets := debug # all
 
 # files and modules
 sources := src/*.c

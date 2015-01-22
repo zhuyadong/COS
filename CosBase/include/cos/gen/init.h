@@ -39,14 +39,16 @@ defgeneric (OBJ, ginitWithChr    , _1, (I32)val);
 defgeneric (OBJ, ginitWithSht    , _1, (I32)val);
 defgeneric (OBJ, ginitWithInt    , _1, (I32)val);
 defgeneric (OBJ, ginitWithLng    , _1, (I64)val);
-defgeneric (OBJ, ginitWithFlt    , _1, (F64)val);
+defgeneric (OBJ, ginitWithFlt    , _1, (F32)val);
+defgeneric (OBJ, ginitWithDbl    , _1, (F64)val);
 defgeneric (OBJ, ginitWithCpx    , _1, (C64)val);
 
 defgeneric (OBJ, ginitWithChrPtr , _1, (I8  *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithShtPtr , _1, (I16 *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithIntPtr , _1, (I32 *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithLngPtr , _1, (I64 *)ref, (U32)size, (I32)stride);
-defgeneric (OBJ, ginitWithFltPtr , _1, (F64 *)ref, (U32)size, (I32)stride);
+defgeneric (OBJ, ginitWithFltPtr , _1, (F32 *)ref, (U32)size, (I32)stride);
+defgeneric (OBJ, ginitWithDblPtr , _1, (F64 *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithCpxPtr , _1, (C64 *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithObjPtr , _1, (OBJ *)ref, (U32)size, (I32)stride);
 defgeneric (OBJ, ginitWithVoidPtr, _1, (void*)ref, (U32)size, (I32)stride, (size_t)esize);

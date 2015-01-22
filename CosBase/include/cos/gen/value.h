@@ -36,7 +36,8 @@ defgeneric(I32  , gchr , _1);
 defgeneric(I32  , gsht , _1);
 defgeneric(I32  , gint , _1);
 defgeneric(I64  , glng , _1);
-defgeneric(F64  , gflt , _1);
+defgeneric(F32  , gflt , _1);
+defgeneric(F64  , gdbl , _1);
 defgeneric(C64  , gcpx , _1);
 defgeneric(OBJ  , gobj , _1);
 
@@ -44,14 +45,16 @@ defgeneric(I32  , gchrAt, _1, at);
 defgeneric(I32  , gshtAt, _1, at);
 defgeneric(I32  , gintAt, _1, at);
 defgeneric(I64  , glngAt, _1, at);
-defgeneric(F64  , gfltAt, _1, at);
+defgeneric(F32  , gfltAt, _1, at);
+defgeneric(F64  , gdblAt, _1, at);
 defgeneric(C64  , gcpxAt, _1, at);
 
 defgeneric(I8*  , gchrPtr, _1);
 defgeneric(I16* , gshtPtr, _1);
 defgeneric(I32* , gintPtr, _1);
 defgeneric(I64* , glngPtr, _1);
-defgeneric(F64* , gfltPtr, _1);
+defgeneric(F32* , gfltPtr, _1);
+defgeneric(F64* , gdblPtr, _1);
 defgeneric(C64* , gcpxPtr, _1);
 defgeneric(OBJ* , gobjPtr, _1);
 

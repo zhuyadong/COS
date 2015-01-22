@@ -6,6 +6,7 @@ Linux
 doc/api
 INSTALLED_FILES
 Darwin/
+CosKit/
 *.a
 *.swp
 *.pyc

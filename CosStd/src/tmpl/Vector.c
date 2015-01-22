@@ -165,7 +165,7 @@ defmethod(OBJ,  ginitWith         , TP, XRange) // Float sequence
     vec->size++;
   }
 
-#ifdef FLTVECTOR_ONLY
+#if defined(FLTVECTOR_ONLY) || defined(DBLVECTOR_ONLY)
   // avoid overshoot
   if (size && (
       (XRange_stride(self2) > 0 && vec->value[size-1] > XRange_end(self2)) ||
@@ -295,8 +295,14 @@ endmethod
 #endif
 
 #ifdef FLTVECTOR_ONLY
-defmethod(OBJ, ginitWithFltPtr, TP, (F64*)ref, (U32)size, (I32)stride)
+defmethod(OBJ, ginitWithFltPtr, TP, (F32*)ref, (U32)size, (I32)stride)
   retmethod( gclone(aFltVectorRef(ref, size, stride)) );
+endmethod
+#endif
+
+#ifdef DBLVECTOR_ONLY
+defmethod(OBJ, ginitWithDblPtr, TP, (F64*)ref, (U32)size, (I32)stride)
+  retmethod( gclone(aDblVectorRef(ref, size, stride)) );
 endmethod
 #endif
 

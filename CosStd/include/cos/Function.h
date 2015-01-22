@@ -26,51 +26,61 @@
 
 typedef I32 (*I32FCT0)(void);
 typedef I64 (*I64FCT0)(void);
+typedef F32 (*F32FCT0)(void);
 typedef F64 (*F64FCT0)(void);
 typedef C64 (*C64FCT0)(void);
 
 typedef I32 (*I32FCT1)(I32);
 typedef I64 (*I64FCT1)(I64);
+typedef F32 (*F32FCT1)(F32);
 typedef F64 (*F64FCT1)(F64);
 typedef C64 (*C64FCT1)(C64);
 
 typedef I32 (*I32FCT2)(I32,I32);
 typedef I64 (*I64FCT2)(I64,I64);
+typedef F32 (*F32FCT2)(F32,F32);
 typedef F64 (*F64FCT2)(F64,F64);
 typedef C64 (*C64FCT2)(C64,C64);
 
 typedef I32 (*I32FCT3)(I32,I32,I32);
 typedef I64 (*I64FCT3)(I64,I64,I64);
+typedef F32 (*F32FCT3)(F32,F32,F32);
 typedef F64 (*F64FCT3)(F64,F64,F64);
 typedef C64 (*C64FCT3)(C64,C64,C64);
 
 typedef I32 (*I32FCT4)(I32,I32,I32,I32);
 typedef I64 (*I64FCT4)(I64,I64,I64,I64);
+typedef F32 (*F32FCT4)(F32,F32,F32,F32);
 typedef F64 (*F64FCT4)(F64,F64,F64,F64);
 typedef C64 (*C64FCT4)(C64,C64,C64,C64);
 
 typedef I32 (*I32FCT5)(I32,I32,I32,I32,I32);
 typedef I64 (*I64FCT5)(I64,I64,I64,I64,I64);
+typedef F32 (*F32FCT5)(F32,F32,F32,F32,F32);
 typedef F64 (*F64FCT5)(F64,F64,F64,F64,F64);
 typedef C64 (*C64FCT5)(C64,C64,C64,C64,C64);
 
 typedef I32 (*I32FCT6)(I32,I32,I32,I32,I32,I32);
 typedef I64 (*I64FCT6)(I64,I64,I64,I64,I64,I64);
+typedef F32 (*F32FCT6)(F32,F32,F32,F32,F32,F32);
 typedef F64 (*F64FCT6)(F64,F64,F64,F64,F64,F64);
 typedef C64 (*C64FCT6)(C64,C64,C64,C64,C64,C64);
 
 typedef I32 (*I32FCT7)(I32,I32,I32,I32,I32,I32,I32);
 typedef I64 (*I64FCT7)(I64,I64,I64,I64,I64,I64,I64);
+typedef F32 (*F32FCT7)(F32,F32,F32,F32,F32,F32,F32);
 typedef F64 (*F64FCT7)(F64,F64,F64,F64,F64,F64,F64);
 typedef C64 (*C64FCT7)(C64,C64,C64,C64,C64,C64,C64);
 
 typedef I32 (*I32FCT8)(I32,I32,I32,I32,I32,I32,I32,I32);
 typedef I64 (*I64FCT8)(I64,I64,I64,I64,I64,I64,I64,I64);
+typedef F32 (*F32FCT8)(F32,F32,F32,F32,F32,F32,F32,F32);
 typedef F64 (*F64FCT8)(F64,F64,F64,F64,F64,F64,F64,F64);
 typedef C64 (*C64FCT8)(C64,C64,C64,C64,C64,C64,C64,C64);
 
 typedef I32 (*I32FCT9)(I32,I32,I32,I32,I32,I32,I32,I32,I32);
 typedef I64 (*I64FCT9)(I64,I64,I64,I64,I64,I64,I64,I64,I64);
+typedef F32 (*F32FCT9)(F32,F32,F32,F32,F32,F32,F32,F32,F32);
 typedef F64 (*F64FCT9)(F64,F64,F64,F64,F64,F64,F64,F64,F64);
 typedef C64 (*C64FCT9)(C64,C64,C64,C64,C64,C64,C64,C64,C64);
 
@@ -99,15 +109,26 @@ defclass(LngFunction8, LngFunction) I64FCT8 fct; endclass
 defclass(LngFunction9, LngFunction) I64FCT9 fct; endclass
 
 defclass(FltFunction , Functor    ) STR     str; endclass
-defclass(FltFunction1, FltFunction) F64FCT1 fct; endclass
-defclass(FltFunction2, FltFunction) F64FCT2 fct; endclass
-defclass(FltFunction3, FltFunction) F64FCT3 fct; endclass
-defclass(FltFunction4, FltFunction) F64FCT4 fct; endclass
-defclass(FltFunction5, FltFunction) F64FCT5 fct; endclass
-defclass(FltFunction6, FltFunction) F64FCT6 fct; endclass
-defclass(FltFunction7, FltFunction) F64FCT7 fct; endclass
-defclass(FltFunction8, FltFunction) F64FCT8 fct; endclass
-defclass(FltFunction9, FltFunction) F64FCT9 fct; endclass
+defclass(FltFunction1, FltFunction) F32FCT1 fct; endclass
+defclass(FltFunction2, FltFunction) F32FCT2 fct; endclass
+defclass(FltFunction3, FltFunction) F32FCT3 fct; endclass
+defclass(FltFunction4, FltFunction) F32FCT4 fct; endclass
+defclass(FltFunction5, FltFunction) F32FCT5 fct; endclass
+defclass(FltFunction6, FltFunction) F32FCT6 fct; endclass
+defclass(FltFunction7, FltFunction) F32FCT7 fct; endclass
+defclass(FltFunction8, FltFunction) F32FCT8 fct; endclass
+defclass(FltFunction9, FltFunction) F32FCT9 fct; endclass
+
+defclass(DblFunction , Functor    ) STR     str; endclass
+defclass(DblFunction1, DblFunction) F64FCT1 fct; endclass
+defclass(DblFunction2, DblFunction) F64FCT2 fct; endclass
+defclass(DblFunction3, DblFunction) F64FCT3 fct; endclass
+defclass(DblFunction4, DblFunction) F64FCT4 fct; endclass
+defclass(DblFunction5, DblFunction) F64FCT5 fct; endclass
+defclass(DblFunction6, DblFunction) F64FCT6 fct; endclass
+defclass(DblFunction7, DblFunction) F64FCT7 fct; endclass
+defclass(DblFunction8, DblFunction) F64FCT8 fct; endclass
+defclass(DblFunction9, DblFunction) F64FCT9 fct; endclass
 
 defclass(CpxFunction , Functor    ) STR     str; endclass
 defclass(CpxFunction1, CpxFunction) C64FCT1 fct; endclass
@@ -125,6 +146,7 @@ defclass(CpxFunction9, CpxFunction) C64FCT9 fct; endclass
 #define aIntFunction(F,...) aFunctionT(Int,F,COS_PP_NARG(__VA_ARGS__))
 #define aLngFunction(F,...) aFunctionT(Lng,F,COS_PP_NARG(__VA_ARGS__))
 #define aFltFunction(F,...) aFunctionT(Flt,F,COS_PP_NARG(__VA_ARGS__))
+#define aDblFunction(F,...) aFunctionT(Dbl,F,COS_PP_NARG(__VA_ARGS__))
 #define aCpxFunction(F,...) aFunctionT(Cpx,F,COS_PP_NARG(__VA_ARGS__))
 
 // --- shortcuts
@@ -133,6 +155,7 @@ defclass(CpxFunction9, CpxFunction) C64FCT9 fct; endclass
 #define aIntFct(...)  aIntFunction (__VA_ARGS__)
 #define aLngFct(...)  aLngFunction (__VA_ARGS__)
 #define aFltFct(...)  aFltFunction (__VA_ARGS__)
+#define aDblFct(...)  aDblFunction (__VA_ARGS__)
 #define aCpxFct(...)  aCpxFunction (__VA_ARGS__)
 #endif
 

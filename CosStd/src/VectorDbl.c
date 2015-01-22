@@ -1,6 +1,6 @@
 /**
  * C Object System
- * COS FltVector
+ * COS DblVector
  *
  * Copyright 2006+ Laurent Deniau <laurent.deniau@gmail.com>
  *
@@ -17,52 +17,52 @@
  * limitations under the License.
  */
 
-#define FLTVECTOR_ONLY
+#define DBLVECTOR_ONLY
 
-#define T     FltVector
-#define TM   mFltVector
-#define TP  pmFltVector
-#define TN    FltVectorN
-#define TF    FltVectorFix
-#define TD    FltVectorDyn
-// #define TL    FltVectorLzy
-#define TV    FltVectorView
-#define TW    FltVectorSubView
-#define TS    "float vector"
-#define TE    Float
+#define T     DblVector
+#define TM   mDblVector
+#define TP  pmDblVector
+#define TN    DblVectorN
+#define TF    DblVectorFix
+#define TD    DblVectorDyn
+// #define TL    DblVectorLzy
+#define TV    DblVectorView
+#define TW    DblVectorSubView
+#define TS    "double vector"
+#define TE    Double
 
-#define TF1   FltFunction1
-#define TF2   FltFunction2
-#define TF3   FltFunction3
-#define TF4   FltFunction4
-#define TF5   FltFunction5
+#define TF1   DblFunction1
+#define TF2   DblFunction2
+#define TF3   DblFunction3
+#define TF4   DblFunction4
+#define TF5   DblFunction5
 
-#define PF1   F32FCT1
-#define PF2   F32FCT2
-#define PF3   F32FCT3
-#define PF4   F32FCT4
-#define PF5   F32FCT5
+#define PF1   F64FCT1
+#define PF2   F64FCT2
+#define PF3   F64FCT3
+#define PF4   F64FCT4
+#define PF5   F64FCT5
 
 #define VS    Vector.ValueSequence.Sequence
 
-#define VAL       F32
-#define VALOBJ(v) aFloat(v)
+#define VAL       F64
+#define VALOBJ(v) aDouble(v)
 
-#define aTView(v,s)    aFltVectorView(v,s)
-#define aTRef(v,s)     aFltVectorRef(v,s)
+#define aTView(v,s)    aDblVectorView(v,s)
+#define aTRef(v,s)     aDblVectorRef(v,s)
 
-#define T_alloc(s)        FltVector_alloc(s)
-#define TV_init(vw,v,s,b) FltVectorView_init(vw,v,s,b)
+#define T_alloc(s)        DblVector_alloc(s)
+#define TV_init(vw,v,s,b) DblVectorView_init(vw,v,s,b)
 
-#define TOVALPTR     gfltPtr
-#define TOVAL(v)     gflt(v)
+#define TOVALPTR     gdblPtr
+#define TOVAL(v)     gdbl(v)
 #define VALUE(v)     v->value
-#define EQUAL(v1,v2) float_equal(v1,v2)
+#define EQUAL(v1,v2) double_equal(v1,v2)
 
-#include <cos/FltVector.h>
+#include <cos/DblVector.h>
 #include <cos/Function.h>
 
-makclass(FltVector, FloatingVector);
+makclass(DblVector, FloatingVector);
 
 // vector templates
 #include "./tmpl/Vector_utl.h"

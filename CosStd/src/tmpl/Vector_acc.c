@@ -234,9 +234,23 @@ endmethod
 
 #if defined(CHRVECTOR_ONLY) || defined(SHTVECTOR_ONLY) || \
     defined(INTVECTOR_ONLY) || defined(LNGVECTOR_ONLY) || \
-    defined(FLTVECTOR_ONLY)
+    defined(FLTVECTOR_ONLY) || defined(DBLVECTOR_ONLY)
 
-defmethod(F64, gfltAt, T, Int)
+defmethod(F32, gfltAt, T, Int)
+  U32 i;
+
+  PRE
+    i = Range_index(self2->value, self->size);
+    ensure( i < self->size, "index out of range" );
+
+  BODY
+    if (!COS_CONTRACT) // no PRE
+      i = Range_index(self2->value, self->size);
+
+    retmethod( self->value[i*self->stride] );
+endmethod
+
+defmethod(F64, gdblAt, T, Int)
   U32 i;
 
   PRE

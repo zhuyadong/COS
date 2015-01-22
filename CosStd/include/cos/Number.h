@@ -33,7 +33,8 @@ defclass(Char    , Int     )            endclass
 defclass(Short   , Int     )            endclass
 
 defclass(Floating, Number  )            endclass
-defclass(Float   , Floating) F64 value; endclass
+defclass(Float   , Floating) F32 value; endclass
+defclass(Double  , Floating) F64 value; endclass
 defclass(Complex , Floating) C64 value; endclass
 
 // ----- automatic constructors
@@ -43,6 +44,7 @@ defclass(Complex , Floating) C64 value; endclass
 #define aInt(a)         ( (OBJ)atInt    (a) )
 #define aLong(a)        ( (OBJ)atLong   (a) )
 #define aFloat(a)       ( (OBJ)atFloat  (a) )
+#define aDouble(a)      ( (OBJ)atDouble (a) )
 #define aComplex(...)   ( (OBJ)atComplex(__VA_ARGS__) )
 
 #define atChar(a)       atNumber2(Char   , a)
@@ -50,6 +52,7 @@ defclass(Complex , Floating) C64 value; endclass
 #define atInt(a)        atNumber (Int    , a)
 #define atLong(a)       atNumber (Long   , a)
 #define atFloat(a)      atNumber (Float  , a)
+#define atDouble(a)     atNumber (Double , a)
 #define atComplex(...)  COS_PP_CAT_NARG(atComplex,__VA_ARGS__)(__VA_ARGS__)
 #define atComplex1(a)   atNumber (Complex, a)
 #define atComplex2(r,i) atNumber (Complex, complex_make(r,i))
@@ -66,6 +69,7 @@ defclass(Complex , Floating) C64 value; endclass
 #define aInt(...)  COS_PP_SEQ(COS_PP_MAP((__VA_ARGS__),aInt_   ))
 #define aLng(...)  COS_PP_SEQ(COS_PP_MAP((__VA_ARGS__),aLong   ))
 #define aFlt(...)  COS_PP_SEQ(COS_PP_MAP((__VA_ARGS__),aFloat  ))
+#define aDbl(...)  COS_PP_SEQ(COS_PP_MAP((__VA_ARGS__),aDouble ))
 #define aCpx(...)  COS_PP_SEQ(COS_PP_MAP((__VA_ARGS__),aComplex))
 
 #define aArrChr(...)  aArray(aChr(__VA_ARGS__))
@@ -73,6 +77,7 @@ defclass(Complex , Floating) C64 value; endclass
 #define aArrInt(...)  aArray(aInt(__VA_ARGS__))
 #define aArrLng(...)  aArray(aLng(__VA_ARGS__))
 #define aArrFlt(...)  aArray(aFlt(__VA_ARGS__))
+#define aArrDbl(...)  aArray(aDbl(__VA_ARGS__))
 #define aArrCpx(...)  aArray(aCpx(__VA_ARGS__))
 
 #endif
@@ -89,20 +94,36 @@ defclass(Complex , Floating) C64 value; endclass
 
 // ---- float inliners
 
-F64  float_ipow    (F64,I32);
-BOOL float_equal   (F64,F64);
-BOOL float_equalEps(F64,F64,F64);
+F32  float_ipow    (F32,I32);
+BOOL float_equal   (F32,F32);
+BOOL float_equalEps(F32,F32,F32);
+
+F64  double_ipow    (F64,I32);
+BOOL double_equal   (F64,F64);
+BOOL double_equalEps(F64,F64,F64);
 
 static inline BOOL
-float_notEqual(F64 x, F64 y)
+float_notEqual(F32 x, F32 y)
 {
   return !float_equal(x,y);
 }
 
 static inline BOOL
-float_notEqualEps(F64 x, F64 y, F64 e)
+float_notEqualEps(F32 x, F32 y, F32 e)
 {
   return !float_equalEps(x,y,e);
+}
+
+static inline BOOL
+double_notEqual(F64 x, F64 y)
+{
+  return !double_equal(x,y);
+}
+
+static inline BOOL
+double_notEqualEps(F64 x, F64 y, F64 e)
+{
+  return !double_equalEps(x,y,e);
 }
 
 // ---- complex inliners

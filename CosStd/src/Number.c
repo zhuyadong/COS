@@ -154,7 +154,12 @@ defmethod(OBJ, ginitWithLng, Long, (I64)val)
   retmethod(_1);
 endmethod
 
-defmethod(OBJ, ginitWithFlt, Float, (F64)val)
+defmethod(OBJ, ginitWithFlt, Float, (F32)val)
+  self->value = val;
+  retmethod(_1);
+endmethod
+
+defmethod(OBJ, ginitWithDbl, Double, (F64)val)
   self->value = val;
   retmethod(_1);
 endmethod
@@ -186,15 +191,27 @@ defmethod(I64, glng, Long)
   retmethod(self->value);
 endmethod
 
-defmethod(F64, gflt, Int)
+defmethod(F32, gflt, Int)
   retmethod(self->value);
 endmethod
 
-defmethod(F64, gflt, Long)
+defmethod(F32, gflt, Long)
   retmethod(self->value);
 endmethod
 
-defmethod(F64, gflt, Float)
+defmethod(F32, gflt, Float)
+  retmethod(self->value);
+endmethod
+
+defmethod(F64, gdbl, Int)
+  retmethod(self->value);
+endmethod
+
+defmethod(F64, gdbl, Long)
+  retmethod(self->value);
+endmethod
+
+defmethod(F64, gdbl, Float)
   retmethod(self->value);
 endmethod
 

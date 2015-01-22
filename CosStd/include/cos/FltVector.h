@@ -28,7 +28,7 @@
 */
 
 defclass(FltVector, FloatingVector)
-  F64 *value;
+  F32 *value;
   U32  size;
   I32  stride;
 endclass
@@ -54,22 +54,22 @@ endclass
 
 // ----- Block vector
 
-defclass(FltVector0, FltVector) F64 _value[]; endclass
-defclass(FltVector1, FltVector) F64 _value[]; endclass
-defclass(FltVector2, FltVector) F64 _value[]; endclass
-defclass(FltVector3, FltVector) F64 _value[]; endclass
-defclass(FltVector4, FltVector) F64 _value[]; endclass
-defclass(FltVector5, FltVector) F64 _value[]; endclass
-defclass(FltVector6, FltVector) F64 _value[]; endclass
-defclass(FltVector7, FltVector) F64 _value[]; endclass
-defclass(FltVector8, FltVector) F64 _value[]; endclass
-defclass(FltVector9, FltVector) F64 _value[]; endclass
-defclass(FltVectorN, FltVector) F64 _value[]; endclass
+defclass(FltVector0, FltVector) F32 _value[]; endclass
+defclass(FltVector1, FltVector) F32 _value[]; endclass
+defclass(FltVector2, FltVector) F32 _value[]; endclass
+defclass(FltVector3, FltVector) F32 _value[]; endclass
+defclass(FltVector4, FltVector) F32 _value[]; endclass
+defclass(FltVector5, FltVector) F32 _value[]; endclass
+defclass(FltVector6, FltVector) F32 _value[]; endclass
+defclass(FltVector7, FltVector) F32 _value[]; endclass
+defclass(FltVector8, FltVector) F32 _value[]; endclass
+defclass(FltVector9, FltVector) F32 _value[]; endclass
+defclass(FltVectorN, FltVector) F32 _value[]; endclass
 
 // ----- Fixed vector, Dynamic vector and Lazy vector
 
 defclass(FltVectorFix, FltVector)
-  F64 *_value;
+  F32 *_value;
   U32  capacity;
 endclass
 
@@ -94,7 +94,7 @@ struct FltVector* FltVectorView_init(struct FltVectorView*, struct FltVector*,
 
 // ----- automatic constructors
 
-#define atFltVector(...)                 atVector    (Flt,F64,__VA_ARGS__)
+#define atFltVector(...)                 atVector    (Flt,F32,__VA_ARGS__)
 #define atFltVectorRef(...)              atVectorRef (Flt,    __VA_ARGS__)
 #define atFltVectorView(vector,slice)    atVectorView(Flt,vector,slice,COS_NO)
 #define atFltVectorSubView(vector,slice) atVectorView(Flt,vector,slice,COS_YES)

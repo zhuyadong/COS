@@ -18,6 +18,7 @@
  */
 
 #include <cos/FltVector.h>
+#include <cos/DblVector.h>
 #include <cos/CpxVector.h>
 #include <cos/Number.h>
 #include <cos/Function.h>
@@ -55,7 +56,8 @@ defmethod(OBJ, gsum, T) \
   retmethod(gautoRelease(O(s))); \
 endmethod
 
-DEFMETHOD(FltVector, F64, aFloat  )
+DEFMETHOD(FltVector, F32, aFloat  )
+DEFMETHOD(DblVector, F64, aDouble  )
 DEFMETHOD(CpxVector, C64, aComplex)
 
 // ----- prod
@@ -77,7 +79,8 @@ defmethod(OBJ, gprod, T) \
   retmethod(gautoRelease(O(p))); \
 endmethod
 
-DEFMETHOD(FltVector, F64, aFloat  )
+DEFMETHOD(FltVector, F32, aFloat  )
+DEFMETHOD(DblVector, F64, aDouble  )
 DEFMETHOD(CpxVector, C64, aComplex)
 
 // ----- absolute, conjugate and argument
@@ -108,6 +111,19 @@ DEFMETHOD(gargument , carg)
 #define DEFMETHOD(gen,fun) \
 \
 defmethod(OBJ, gen, FltVector) \
+  F32 *val   = self->value; \
+  I32  val_s = self->stride; \
+  F32 *end   = self->value + self->size*self->stride; \
+\
+  while (val != end) { \
+    *val = fun##f(*val); \
+    val += val_s; \
+  } \
+\
+  retmethod(_1); \
+endmethod \
+\
+defmethod(OBJ, gen, DblVector) \
   F64 *val   = self->value; \
   I32  val_s = self->stride; \
   F64 *end   = self->value + self->size*self->stride; \
@@ -156,6 +172,20 @@ DEFMETHOD(gatangenth  , atanh )
 // ----- power
 
 defmethod(OBJ, gpower, FltVector, Float)
+  F32 *val   = self->value;
+  I32  val_s = self->stride;
+  F32 *end   = self->value + self->size*self->stride;
+  F32  exp   = self2->value;
+
+  while (val != end) {
+    *val = powf(*val,exp);
+    val += val_s;
+  }
+
+  retmethod(_1);
+endmethod
+
+defmethod(OBJ, gpower, DblVector, Double)
   F64 *val   = self->value;
   I32  val_s = self->stride;
   F64 *end   = self->value + self->size*self->stride;

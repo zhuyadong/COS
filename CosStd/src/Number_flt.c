@@ -31,12 +31,53 @@
 
 // -----
 
-useclass(Float, Complex);
+useclass(Float, Double, Complex);
 
 // ----- float
 
 BOOL
-float_equalEps(F64 x, F64 y, F64 eps)
+float_equalEps(F32 x, F32 y, F32 eps)
+{
+  // absolute difference
+  F32 d = x-y;
+
+  if (d < 0) d = -d;
+  if (d < 2*DBL_MIN) return YES;
+
+  // relative difference
+  if (x < 0) x = -x;
+  if (y < 0) y = -y;
+
+  return d <= (x > y ? x : y) * eps;
+}
+
+BOOL
+float_equal(F32 x, F32 y)
+{
+  return float_equalEps(x, y, 2*DBL_EPSILON);
+}
+
+F32
+float_ipow(F32 v, I32 n)
+{
+  F32 a = 1.0;
+
+  if (n < 0) n = -n, v = 1.0/v;
+
+  for (;;) {
+    if (n  &  1) a *= v;
+
+    if (n >>= 1) v *= v;
+    else         break;
+  }
+
+  return v;
+}
+
+// ----- double
+
+BOOL
+double_equalEps(F64 x, F64 y, F64 eps)
 {
   // absolute difference
   F64 d = x-y;
@@ -52,13 +93,13 @@ float_equalEps(F64 x, F64 y, F64 eps)
 }
 
 BOOL
-float_equal(F64 x, F64 y)
+double_equal(F64 x, F64 y)
 {
-  return float_equalEps(x, y, 2*DBL_EPSILON);
+  return double_equalEps(x, y, 2*DBL_EPSILON);
 }
 
 F64
-float_ipow(F64 v, I32 n)
+double_ipow(F64 v, I32 n)
 {
   F64 a = 1.0;
   
