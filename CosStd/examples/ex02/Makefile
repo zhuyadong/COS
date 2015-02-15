@@ -25,10 +25,10 @@ cos := ../../../CosBase/include/cos
 include $(cos)/prologue
 
 # project
-program := cos-ex01
+program := cos-ex02
 
 # targets
-targets := debug.run # debug.run
+targets := debug# debug.run
 
 # files & modules
 sources := *.c

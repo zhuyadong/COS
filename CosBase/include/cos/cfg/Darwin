@@ -54,9 +54,9 @@ STRIP       := strip
 #
 # compiler and linker specific
 #
-CPPFLAGS    := -std=c99 -W -Wall -pedantic -pipe
-CCFLAGS     := -std=c99 -W -Wall -pedantic -pipe -O3
-LDFLAGS     := -std=c99 -W -Wall -pedantic -pipe -O3
+CPPFLAGS    := -std=c99 -w -Wall -pedantic -pipe
+CCFLAGS     := -std=c99 -w -Wall -pedantic -pipe
+LDFLAGS     := -std=c99 -w -Wall -pedantic -pipe
 
 DEBUG_CPP   :=
 DEBUG_CC    := -g

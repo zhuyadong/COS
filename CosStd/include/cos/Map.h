@@ -4,10 +4,10 @@
 #include <cos/Object.h>
 
 defclass(Map)
-	U32 mask; /* node count mask */
-	U32 used; /* used node count */
-	struct _Node *free; /* top free node */ 
-	struct _Node *nodes; /* allocated nodes */
+	U64    mask;    // node count mask
+	U64    used;    // used node count
+	struct _MapNode *free;  // top free node
+	struct _MapNode *nodes; // allocated nodes
 endclass
 
 #define aMap() \

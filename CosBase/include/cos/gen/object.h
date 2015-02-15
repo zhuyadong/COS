@@ -28,20 +28,22 @@ defgeneric(OBJ , gallocWithSize, _1, (size_t)extra);
 defgeneric(void, gdealloc      , _1);
 
 // new
-defgeneric(OBJ , gnew       , _1);
-defgeneric(OBJ , gnewWith   , _1, _2);
-defgeneric(OBJ , gnewWith2  , _1, _2, _3);
-defgeneric(OBJ , gnewWith3  , _1, _2, _3, _4);
-defgeneric(OBJ , gnewWith4  , _1, _2, _3, _4, _5);
-defgeneric(OBJ , gnewWithStr, _1, (STR)str);
+defgeneric(OBJ,  gnew,          _1);
+defgeneric(OBJ,  gnewWith,      _1, _2);
+defgeneric(OBJ,  gnewWith2,     _1, _2, _3);
+defgeneric(OBJ,  gnewWith3,     _1, _2, _3, _4);
+defgeneric(OBJ,  gnewWith4,     _1, _2, _3, _4, _5);
+defgeneric(OBJ,  gnewWithStr,   _1, (STR)str);
+defgenericv(OBJ, gnewWithVaArg, _1, ...);
 
 // constructors, copy ctor
-defgeneric(OBJ , ginit       , _1);
-defgeneric(OBJ , ginitWith   , _1, _2); // includes copy ctor: ginitWith(T,T)
-defgeneric(OBJ , ginitWith2  , _1, _2, _3);
-defgeneric(OBJ , ginitWith3  , _1, _2, _3, _4);
-defgeneric(OBJ , ginitWith4  , _1, _2, _3, _4, _5);
-defgeneric(OBJ , ginitWithStr, _1, (STR)str);
+defgeneric(OBJ,  ginit,          _1);
+defgeneric(OBJ,  ginitWith,      _1, _2); // includes copy ctor: ginitWith(T,T)
+defgeneric(OBJ,  ginitWith2,     _1, _2, _3);
+defgeneric(OBJ,  ginitWith3,     _1, _2, _3, _4);
+defgeneric(OBJ,  ginitWith4,     _1, _2, _3, _4, _5);
+defgeneric(OBJ,  ginitWithStr,   _1, (STR)str);
+//defgenericv(OBJ, ginitWithVaArg, _1, ...);
 
 // destructor, clearing
 defgeneric(OBJ , gdeinit, _1);

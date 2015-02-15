@@ -7,6 +7,7 @@ doc/api
 INSTALLED_FILES
 Darwin/
 CosKit/
+nbproject/
 *.a
 *.swp
 *.pyc

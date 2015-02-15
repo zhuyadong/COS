@@ -35,6 +35,7 @@ makclass(Floating, Number);
 makclass(Int     , Integral);
 makclass(Long    , Integral);
 makclass(Float   , Floating);
+makclass(Double  , Floating);
 makclass(Complex , Floating);
 
 makclass(Char    , Int);
