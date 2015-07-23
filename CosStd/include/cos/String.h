@@ -109,6 +109,6 @@ struct String* String_alloc(U32);
 
 #define atStringRef_2(buffer,size) \
   ( &(struct String) { {{{ cos_object_auto(String) }}}, \
-    buffer, size } )
+    ((U8*)buffer), size } )
 
 #endif // COS_STRING_H
